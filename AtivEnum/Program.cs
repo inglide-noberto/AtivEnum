@@ -1,4 +1,6 @@
-﻿namespace AtivEnum
+﻿using AtivEnum.Entities;
+
+namespace AtivEnum
 {
     internal class Program
     {
@@ -20,7 +22,15 @@
             Console.Write("How many contracts to this worker");
             int qtdWork = int.Parse(Console.ReadLine());
 
+            Department department = new Department(departName);
 
+            for (int i = 1; i <= qtdWork; i++)
+            {
+                Console.WriteLine($"Enter #{i} contract data: ");
+                Console.Write("Date (DD/MM/YYYY): ");
+                Console.Write("Valeu per hour: ");
+            }
+            
 
         }
     }
