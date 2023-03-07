@@ -8,6 +8,12 @@ namespace AtivEnum.Entities
         public WorkLevel level { get; set; }
         public double baseSalary { get; set; }
 
+        public Worker(string name, WorkLevel level, double salary)
+        {
+            this.name = name; 
+            this.level = level;
+            this.baseSalary = salary;
+        }
         public void addContract(HourContract contract)
         {
 
@@ -16,7 +22,7 @@ namespace AtivEnum.Entities
         {
 
         }
-        public double income( int year, int month)
+        public double income(int year, int month)
         {
             return baseSalary; // trocar o retorno
         }
