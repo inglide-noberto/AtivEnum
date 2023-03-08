@@ -2,20 +2,22 @@
 {
     class HourContract
     {
-        public DateTime date { get; set; }
-        public double valuePerHour { get; set; }
-        public int hours { get; set; }
+        public DateTime Date { get; set; }
+        public double ValuePerHour { get; set; }
+        public int Hours { get; set; }
 
-        public HourContract(DateTime dateTime, double value, int hours) 
-        { 
-            this.date = dateTime;
-            this.valuePerHour = value;
-            this.hours = hours;
-        }   
+        public HourContract() { }
+
+        public HourContract(DateTime date, double valuePerHour, int hours)
+        {
+            Date = date;
+            ValuePerHour = valuePerHour;
+            Hours = hours;
+        }
 
         public double totalValue()
         {
-            return valuePerHour;
+            return Hours * ValuePerHour;
         }
     }
 }

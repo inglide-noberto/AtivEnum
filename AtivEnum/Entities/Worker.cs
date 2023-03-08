@@ -1,31 +1,48 @@
 ﻿using AtivEnum.Entities.Enums;
+using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace AtivEnum.Entities
 {
     class Worker
     {
-        public string name { get; set; }
-        public WorkLevel level { get; set; }
-        public double baseSalary { get; set; }
+        public string Name { get; set; }
+        public double BaseSalary { get; set; }
+        public WorkLevel Level { get; set; }
+        public List<HourContract> Contracts { get; set; } = new List<HourContract>();
 
-        public Worker(string name, WorkLevel level, double salary)
-        {
-            this.name = name; 
-            this.level = level;
-            this.baseSalary = salary;
-        }
-        public void addContract(HourContract contract)
-        {
+        public Department Department { get; set; }
 
-        }
-        public void removeContract(HourContract contract)
-        {
+        public Worker() { }
 
-        }
-        public double income(int year, int month)
+        public Worker(string name, double baseSalary, WorkLevel level, Department department)
         {
-            return baseSalary; // trocar o retorno
+            Name = name;
+            BaseSalary = baseSalary;
+            Level = level;
+            Department = department;
         }
 
+        public void AddContract(HourContract contract)
+        {
+            Contracts.Add(contract);
+        }
+        public void RemoveContract(HourContract contract)
+        {
+            Contracts.Remove(contract);
+        }
+        public double Income(int year, int month)
+        {
+            double sum = BaseSalary;
+
+            foreach (HourContract contract in Contracts)
+            {
+                if (contract.Date.Year == year && contract.Date.Month == month)
+                {
+                    sum += contract.totalValue();
+                }
+            }
+            return sum;
+        }
     }
 }

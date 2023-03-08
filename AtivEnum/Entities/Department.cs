@@ -2,11 +2,12 @@
 {
     class Department
     {
-        public string name { get; set; }
+        public string Name { get; set; }
 
+        public Department() { }
         public Department(string name)
         {
-            this.name = name;
+            Name = name;
         }
     }
 }
